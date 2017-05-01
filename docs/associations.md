@@ -254,10 +254,10 @@ User.belongsToMany(Project, { through: UserProjects })
 Project.belongsToMany(User, { through: UserProjects })
 ```
 
-To add a new project to a user and set its status, you pass extra `options.through` to the setter, which contains the attributes for the join table
+To add a new project to a user and set its status, you pass the attributes for the join table
 
 ```js
-user.addProject(project, { through: { status: 'started' }})
+user.addProject(project, { status: 'started' })
 ```
 
 By default the code above will add projectId and userId to the UserProjects table, and _remove any previously defined primary key attribute_ - the table will be uniquely identified by the combination of the keys of the two tables, and there is no reason to have other PK columns. To enforce a primary key on the `UserProjects` model you can add it manually.
